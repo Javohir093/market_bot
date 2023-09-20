@@ -16,3 +16,5 @@ async def do_start(message: types.Message):
     except Exception as error:
         logger.info(error)
     await message.answer(f"Assalomu alaykum {full_name}!")
+    cats = await db.select_all_cats()
+    print(cats)
