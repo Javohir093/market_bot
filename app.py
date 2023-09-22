@@ -44,6 +44,10 @@ async def database_connected():
     await db.create_table_users()
     await db.create_table_cats()
     await db.create_table_products()
+    await db.create_table_carts()
+    await db.create_table_cart_items()
+    await db.create_table_orders()
+    await db.create_table_order_item()
 
 
 async def aiogram_on_startup_polling(dispatcher: Dispatcher, bot: Bot) -> None:
@@ -58,6 +62,7 @@ async def aiogram_on_startup_polling(dispatcher: Dispatcher, bot: Bot) -> None:
     await setup_aiogram(bot=bot, dispatcher=dispatcher)
     await on_startup_notify(bot=bot)
     await set_default_commands(bot=bot)
+
 
 async def aiogram_on_shutdown_polling(dispatcher: Dispatcher, bot: Bot):
     logger.info("Stopping polling")
@@ -83,6 +88,7 @@ def main():
                                             # allowed_updates=['message', 'chat_member'],
                                             # закрывать сеансы бота при выключении
                                             close_bot_session=True))
+
 
 if __name__ == "__main__":
     try:
